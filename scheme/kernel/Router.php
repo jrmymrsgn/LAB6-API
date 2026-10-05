@@ -444,8 +444,6 @@ class Router
         }
 
         // Security check for permitted characters
-
-        // Security check for permitted characters
         $url_segments = explode('/', $url);
         array_shift($url_segments);
         foreach($url_segments as $uri)
