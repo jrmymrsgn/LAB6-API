@@ -428,7 +428,7 @@ class Router
      * @param string $method
      * @return void
      */
-    public function initiate($url, $method)
+        public function initiate($url, $method)
     {
         if (empty($url)) {
             $url = '/';
@@ -436,6 +436,14 @@ class Router
         if (strpos($url, '/') !== 0) {
             $url = '/' . $url;
         }
+
+        if ($method === 'OPTIONS') {
+            handle_cors();
+            http_response_code(204);
+            exit;
+        }
+
+        // Security check for permitted characters
 
         // Security check for permitted characters
         $url_segments = explode('/', $url);
